@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graphics</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script defer type="text/javascript" src="js/main.js"></script>
+<body>
+	<div class="graphic" id="graphic1">
+		<!-- <ol id="graphic1"></ol> -->
+	</div>
+
+</br>
+	<div>
+		<input type="text" name="name" id="name">
+		<input type="text" name="value" id="value">
+		<button onclick="addItem();">add</button>
+	</div>
+	</br>
+	<div>
+	<label>red</label>
+	<input type="radio" checked name="color" value="red" onchange="setTheme(this.value);">
+	<label>green</label>
+	<input type="radio" name="color" value="green" onchange="setTheme(this.value);">
+	<label>blue</label>
+	<input type="radio" name="color" value="blue" onchange="setTheme(this.value);">
+	<input type="color" name="color" onchange="setTheme(this.value);">
+	</div>
+</body>
+</html>
