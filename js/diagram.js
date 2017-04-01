@@ -5,10 +5,12 @@ class Diagram {
 	constructor(id){
 		this.source = document.getElementById(id);
 		this.dataHistory = [];
+		this.className = 'graphic';
 	}
 
 	create(name, data){
 		this.source.innerHTML = null;
+		this.source.className = this.className; 
 		this.generateNav(name, data);
 		this.generateDiagram(name, data);
 	}
