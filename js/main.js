@@ -1,4 +1,6 @@
 
+var his = [];
+
 function setTheme(color) {
 //document.querySelector('.container').style.setProperty('--theme-color', color);
 document.querySelector('.graphic').style.setProperty('--graphic-bg-color', color);
@@ -8,20 +10,22 @@ function setBlure(el){
 document.querySelector('.graphic').style.setProperty('--graphic-blur', '5px');
 //el.style.setProperty('filter', 'blur(0px)');
 el.style.setProperty('--graphic-blur', '0px');
-console.log('blur');	
+////console.log('blur');	
 }
 
 function restoreBlure(el){
 	//el.style.removeProperty('filter');
-	console.log("DEL BLUR");
+	////console.log("DEL BLUR");
 	el.style.removeProperty('--graphic-blur');
 	document.querySelector('.graphic').style.setProperty('--graphic-blur', '0px');
 }
 
 function createGraphic(id, graphicName, data, backName, backData){
 	console.log("Create for: "+id);
+	console.log("//////////////////"+graphicName+"////////////////////");
+	console.log("length: "+his.length);
 	var	parent = document.getElementById(id);
-
+	//	his.push({'name' : graphicName	, 'data' : data	});
 	parent.innerHTML = '';
 
 	var nav = document.createElement('nav');
@@ -31,17 +35,63 @@ function createGraphic(id, graphicName, data, backName, backData){
 	parent.appendChild(nav);
 	nav.appendChild(ul);
 
-	if (backData){
-	var back = document.createElement('li');
-	back.innerHTML = backName;
-	ul.appendChild(back);
-	back.onclick = function(){
-		createGraphic('graphic1', backName, backData, false, false);
-	};
-	}
+	//if (his.length == 0){
 
-	now.innerHTML = graphicName;
-	ul.appendChild(now);
+		console.log("WAS ADDED: "+graphicName);
+		
+		his.push({'name' : graphicName, 'data' : data});
+		//his.remove({'name' : graphicName, 'data' : data});
+		
+	//}
+
+	if(his.length > 0){
+		var newHis = [];
+		for (var key in his) {
+
+							console.log("item: "+his[key].name);
+							var back = document.createElement('li');
+							back.innerHTML = his[key].name;
+							ul.appendChild(back);
+							newHis.push({'name' : his[key].name, 'data' : his[key].data });
+							if(his[key].name == graphicName) break; 
+							var hname = his[key].name;
+							var hdata = his[key].data;
+							back.onclick = function(){
+								alert(hname);
+								createGraphic('graphic1', hname, hdata, false, false);
+							};
+							console.log("item-after: "+his[key].name);
+			 				
+			//console.log("%%%%%%%NOW: "+graphicName);
+			//console.log("%%%%%%%: "+his[key].name);
+		}
+		his = newHis;
+	}
+/*
+	his.forEach(function (hisItem){
+		console.log("%%%%%%%NOW: "+graphicName);
+		console.log("%%%%%%%: "+hisItem.name);
+		if(hisItem.name == graphicName) break;
+	});
+*/
+	/*var newHis = [];
+		his.reverse().forEach(function (hisItem){
+			do{
+				console.log("item!!!!: "+hisItem.name);
+						newHis.push({'name' : hisItem.name, 'data' : hisItem.data });
+						var back = document.createElement('li');
+						back.innerHTML = hisItem.name;
+						ul.appendChild(back);
+						back.onclick = function(){
+							createGraphic('graphic1', hisItem.name, hisItem.data, false, false);
+						};
+			}while(hisItem.name != graphicName);
+			
+		});
+	his = newHis;
+*/
+	//now.innerHTML = graphicName;
+	//ul.appendChild(now);
 
 	var graphic = document.createElement('ol');
 
@@ -53,11 +103,11 @@ function createGraphic(id, graphicName, data, backName, backData){
 
 	var height = graphic.offsetHeight;
 	var width  = graphic.offsetWidth;
-	console.log("height value = "+height);
-	console.log("width value = "+width);
+	///console.log("height value = "+height);
+	////console.log("width value = "+width);
 
 	var max = getMax(data);
-	console.log("max value = "+max);
+	///console.log("max value = "+max);
 /*
 	var last = max.toString().substr(max.toString().length-1,1);
 	console.log("last value = "+last);
@@ -175,8 +225,8 @@ function showDescr(item, li, graphic, graphicName, graphicData){
 	var div = document.createElement('div');
 	div.id = item.name+'_graphic_descr';
 	//div.tabindex = 1;
-	console.log("event.clientY: "+event.clientY);
-	console.log("event.clientX: "+event.clientX);
+	///console.log("event.clientY: "+event.clientY);
+	///console.log("event.clientX: "+event.clientX);
 	div.className = 'descr';
 
 	div.style.setProperty('top', event.clientY+'px');
@@ -184,7 +234,7 @@ function showDescr(item, li, graphic, graphicName, graphicData){
 //document.body.tabindex = 0;
 	graphic.appendChild(div);
 	
-	console.log("DIV: "+div.clientWidth);
+	///console.log("DIV: "+div.clientWidth);
 	if (event.clientX >= window.innerWidth-div.clientWidth+50) div.style.setProperty('left', event.clientX-div.clientWidth+'px');
 	else div.style.setProperty('left', event.clientX+'px');
 	div.setAttribute('tabindex', 1);
@@ -210,7 +260,9 @@ function showDescr(item, li, graphic, graphicName, graphicData){
 			if (item.descr[key] instanceof Array){
 				spanName.className = 'link';
 				spanName.onclick = function(){
-					createGraphic('graphic1', key, item.descr[key], graphicName, graphicData);
+					//his.push({'name' : key, 'data' : item.descr[key]});
+						//console.log("HISSSSSS: "+key);
+					createGraphic('graphic1', key, item.descr[key], false, false);
 				};
 
 			}else{
