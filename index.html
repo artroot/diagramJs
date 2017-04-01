@@ -4,7 +4,7 @@
 	<title>Graphics</title>
 </head>
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<script defer type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/diagram.js"></script>
 <body>
 	<div class="graphic" id="graphic1">
 		<!-- <ol id="graphic1"></ol> -->
@@ -19,12 +19,111 @@
 	</br>
 	<div>
 	<label>red</label>
-	<input type="radio" checked name="color" value="red" onchange="setTheme(this.value);">
+	<input type="radio" checked name="color" value="red" onchange="graphic1.setTheme(this.value);">
 	<label>green</label>
-	<input type="radio" name="color" value="green" onchange="setTheme(this.value);">
+	<input type="radio" name="color" value="green" onchange="graphic1.setTheme(this.value);">
 	<label>blue</label>
-	<input type="radio" name="color" value="blue" onchange="setTheme(this.value);">
-	<input type="color" name="color" onchange="setTheme(this.value);">
+	<input type="radio" name="color" value="blue" onchange="graphic1.setTheme(this.value);">
+	<input type="color" name="color" onchange="graphic1.setTheme(this.value);">
 	</div>
+
+	<script type="text/javascript">
+		var data = [
+		{
+			'name' : 'Jan', 
+			'value' : 3,
+			'descr' : {
+				'Descr' : 'Test descr',
+				'Cost' : 'Test cost',
+				'Else' : 'Lol'
+			}
+		},
+		{
+			'name' : 'Feb', 
+			'value' : 5
+		},
+		{
+			'name' : 'Mar', 
+			'value' : 36,
+			'descr' : {
+				'One' : 'xxxx',
+				'Count' : 36
+			}
+		},
+		{
+			'name' : 'Apr', 
+			'value' : 8
+		},
+		{
+			'name' : 'May', 
+			'value' : 19
+		},
+		{
+			'name' : 'Jun', 
+			'value' : 6
+		},
+		{
+			'name' : 'Jul', 
+			'value' : 1
+		},
+		{
+			'name' : 'Aug', 
+			'value' : 28,
+			'descr' : {
+				'One' : 'xxxx',
+				'Count' : 28,
+				'Week' : [
+					{
+						'name' : 'Week1',
+						'value' : 10
+					},
+					{
+						'name' : 'Week2',
+						'value' : 10,
+						'descr' : {
+							'Days' : [
+							{
+								'name' : 'Mon',
+								'value' : 5
+							},
+							{
+								'name' : 'Tue',
+								'value' : 5
+							}
+							]	
+						}
+					}, 
+					{
+						'name' : 'Week3',
+						'value' : 8
+					},
+				]
+			}
+		},
+		{
+			'name' : 'Sep', 
+			'value' : 28,
+		},
+		{
+			'name' : 'Oct', 
+			'value' : 11,
+		},
+		{
+			'name' : 'Nov', 
+			'value' : 18,
+			'descr' : {
+				'One' : 'xxxx',
+				'Count' : 18
+			}
+		},
+		{
+			'name' : 'Dec', 
+			'value' : 33,
+		},
+	];
+
+let graphic1 = new Diagram('graphic1');
+	graphic1.create('Statistics', data);
+	</script>
 </body>
 </html>
