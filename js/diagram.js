@@ -125,9 +125,18 @@ class Diagram {
 		
 		var thisClass = this;
 
+			var li = document.createElement('li');
+			li.style.setProperty('padding-top', (diagramSpaceHeight/maxItem*maxItem)+'px');
+			li.style.setProperty('width', '0px');
+			li.style.setProperty('padding-left', '0px');
+			li.style.setProperty('padding-right', '0px');
+			diagram.appendChild(li);
+
+
 		data.forEach(function(item, i){		
 			var li = document.createElement('li');
-			li.style.setProperty('padding-top', (diagramSpaceHeight/maxItem*item.value)+'px');
+			li.style.setProperty('animation-name', 'animate-li');
+			li.style.setProperty('--graphic-padding-top', (diagramSpaceHeight/maxItem*item.value)+'px');
 			li.style.setProperty('width', (100/data.length)-5+'%');
 			li.name = item.name;	
 			diagram.appendChild(li);
@@ -144,7 +153,9 @@ class Diagram {
 			var div = document.createElement('div');
 			var margin = (diagramSpaceHeight/maxItem*item.value)+50;
 			div.style.setProperty('width', (100/data.length)-5+'%');
-			div.style.setProperty('margin-top', '-'+margin+'px');
+			/*div.style.setProperty('margin-top', '-'+margin+'px');*/
+			div.style.setProperty('animation-name', 'animate-div');
+			div.style.setProperty('--graphic-margin-top', '-'+margin+'px');
 			
 			li.appendChild(div);
 

@@ -57,7 +57,6 @@ function createGraphic(id, graphicName, data, backName, backData){
 							var hname = his[key].name;
 							var hdata = his[key].data;
 							back.onclick = function(){
-								alert(hname);
 								createGraphic('graphic1', hname, hdata, false, false);
 							};
 							console.log("item-after: "+his[key].name);

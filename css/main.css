@@ -18,6 +18,21 @@
     padding: 15px;
 }
 	
+@keyframes animate-li {
+ /*   25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+ */   0% {padding-top: 0px;}
+ 		100%   {padding-top: var(--graphic-padding-top);}
+}
+
+@keyframes animate-div {
+ /*   25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+ */   0% {margin-top: 0px;}
+ 		100%   {margin-top: var(--graphic-margin-top);}
+}
 
 .graphic {
 	--graphic-width: 100%; 
@@ -50,6 +65,9 @@
 	padding-right: 1%;
 	cursor: pointer;
 	filter: blur(var(--graphic-blur));
+	animation-duration: 2s;
+	padding-top: var(--graphic-padding-top);
+	/*animation-iteration-count: 3;*/
 	/*width: 10px;*/
 }
 
@@ -61,6 +79,8 @@
 .graphic ol > li > div {
 	position: absolute;
     text-align: center;
+    animation-duration: 1s;
+	margin-top: var(--graphic-margin-top);
 }
 
 .graphic ol > li > div > p {
