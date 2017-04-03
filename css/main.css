@@ -18,21 +18,54 @@
     padding: 15px;
 }
 	
+@-webkit-keyframes animate-li {
+    0% {padding-top: 0px;}
+ 	100%   {padding-top: var(--graphic-padding-top);}
+}
+
+@-webkit-keyframes animate-div {
+    0% {
+    	margin-top: 0px;
+    	opacity: 0;
+    }
+ 	100%   {
+ 		margin-top: var(--graphic-margin-top);
+ 		opacity: 1;
+ 	}
+}
+
 @keyframes animate-li {
- /*   25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
- */   0% {padding-top: 0px;}
- 		100%   {padding-top: var(--graphic-padding-top);}
+    0% {padding-top: 0px;}
+ 	100%   {padding-top: var(--graphic-padding-top);}
 }
 
 @keyframes animate-div {
- /*   25%  {background-color:yellow; left:200px; top:0px;}
-    50%  {background-color:blue; left:200px; top:200px;}
-    75%  {background-color:green; left:0px; top:200px;}
- */   0% {margin-top: 0px;}
- 		100%   {margin-top: var(--graphic-margin-top);}
+    0% {
+    	margin-top: 0px;
+    	opacity: 0;
+    }
+ 	100%   {
+ 		margin-top: var(--graphic-margin-top);
+ 		opacity: 1;
+ 	}
 }
+/*
+@keyframes animate-descr {
+    0% {
+    	width: 0px;
+    	height: 0px;
+    	opacity: 0.1;
+    }
+    30%{
+    	opacity: 0.3;
+    }
+ 	100%   {
+ 		width: 300px;
+    	height: 200px;
+    	opacity: 1;
+ 	}
+}
+*/
 
 .graphic {
 	--graphic-width: 100%; 
@@ -41,13 +74,14 @@
 	--graphic-blur: 0px;
 	width: var(--graphic-width);
 	padding-top: 50px;
+	font-family: sans-serif;
 	/*height: var(--graphic-height);*/
 }
 
 .graphic ol {
 	display: inline-block;
 	/*position: absolute;*/
-	width: 100%; 
+	width: 96%; 
 	height: var(--graphic-height);
 	border-bottom: 1px solid gray;
 	padding-bottom: 1px;
@@ -65,7 +99,7 @@
 	padding-right: 1%;
 	cursor: pointer;
 	filter: blur(var(--graphic-blur));
-	animation-duration: 2s;
+	animation-duration: 0.5s;
 	padding-top: var(--graphic-padding-top);
 	/*animation-iteration-count: 3;*/
 	/*width: 10px;*/
@@ -79,7 +113,7 @@
 .graphic ol > li > div {
 	position: absolute;
     text-align: center;
-    animation-duration: 1s;
+    animation-duration: 0.4s;
 	margin-top: var(--graphic-margin-top);
 }
 
@@ -87,15 +121,21 @@
 	/*position: absolute;*/
     text-align: center;
     background-color: var(--graphic-bg-color);
-    border-radius: 40%;
-    padding: 5px;
+    border-radius: 50%;
+    padding: 8px;
     display: inline-block;
-    min-width: 20px;
+    min-width: 15px;
+    font-size: 12px;
+}
+
+.graphic nav {
+	border-bottom: 1px solid gray;
+    margin-bottom: 30px;
 }
 
 .graphic nav > ul {
 	display: block;
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
 }
 
 .graphic nav > ul > li {
@@ -122,6 +162,12 @@
 	content: "/";
 }
 
+.graphic .button {
+	padding: 5px 10px 5px 10px;
+	border-radius: 10px;
+	background-color: #CCC;
+}
+
 .link {
 	cursor: pointer;
 	color: blue;
@@ -137,7 +183,9 @@
 	position: absolute;
 	width: 300px;
 	height: 200px;
-	background-color: white;
+	/*animation-name: animate-descr;
+	animation-duration: 0.1s;
+	*/background-color: white;
 	box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.64);
 }
 
