@@ -99,6 +99,7 @@
 	padding-right: 1%;
 	cursor: pointer;
 	filter: blur(var(--graphic-blur));
+	-webkit-filter: blur(var(--graphic-blur));
 	animation-duration: 0.5s;
 	padding-top: var(--graphic-padding-top);
 	/*animation-iteration-count: 3;*/
