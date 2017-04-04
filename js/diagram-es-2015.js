@@ -1,18 +1,21 @@
+'use strict';
 
-	var Diagram = function(id){
+class Diagram {
+
+	constructor(id){
 		this.source = document.getElementById(id);
 		this.dataHistory = [];
 		this.className = 'graphic';
 	}
 
-	Diagram.prototype.create = function(name, data) {
+	create(name, data){
 		this.source.innerHTML = null;
 		this.source.className = this.className; 
 		this.generateNav(name, data);
 		this.generateDiagram(name, data);
-	};
+	}
 
-	Diagram.prototype.generateNav = function(name, data) {
+	generateNav(name, data){
 		var nav = document.createElement('nav');
 		var ul 	= document.createElement('ul');
 		var now = document.createElement('li');
@@ -44,20 +47,20 @@
 			}
 			this.dataHistory = newdataHistory;
 		}
-	};
+	}
 
-	Diagram.prototype.setFocus = function(item){
+	setFocus(item){
 		this.source.style.setProperty('--graphic-blur', '5px');
 		//document.querySelector('.graphic').style.setProperty('--graphic-blur', '5px');
 		item.style.setProperty('--graphic-blur', '0px');
 	}
 
-	Diagram.prototype.blur = function(item){
+	blur(item){
 		item.style.removeProperty('--graphic-blur');
 		this.source.style.setProperty('--graphic-blur', '0px');
 	}
 
-	Diagram.prototype.getMax = function(positions){
+	getMax(positions){
 		var max = positions[0].value;
 		positions.forEach(function(item, i, arr){
 			if(item.value > max) max = item.value;
@@ -65,11 +68,11 @@
 		return max;
 	}
 
-	Diagram.prototype.setTheme = function(color) {
+	setTheme(color) {
 		this.source.style.setProperty('--graphic-bg-color', color);
 	}
 
-	Diagram.prototype.showDetailBox = function(item, data){
+	showDetailBox(item, data){
 		var oldBox = document.getElementById(data.name+'_diagram_box');
 		if(oldBox && oldBox.id == data.name+'_diagram_box') oldBox.remove();
 		var div = document.createElement('div');
@@ -118,7 +121,7 @@
 		}
 	}
 
-	Diagram.prototype.generateDiagram = function(name, data){
+	generateDiagram(name, data){
 		var diagram = document.createElement('ol');
 		this.source.appendChild(diagram);
 
@@ -168,3 +171,6 @@
 			div.appendChild(p);
 		});
 	}
+}
+
+
