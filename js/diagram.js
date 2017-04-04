@@ -1,18 +1,17 @@
-
-	var Diagram = function(id){
+	function Diagram(id){
 		this.source = document.getElementById(id);
 		this.dataHistory = [];
 		this.className = 'graphic';
-	}
+	
 
-	Diagram.prototype.create = function(name, data) {
+	this.create = function(name, data) {
 		this.source.innerHTML = null;
 		this.source.className = this.className; 
 		this.generateNav(name, data);
 		this.generateDiagram(name, data);
 	};
 
-	Diagram.prototype.generateNav = function(name, data) {
+	this.generateNav = function(name, data) {
 		var nav = document.createElement('nav');
 		var ul 	= document.createElement('ul');
 		var now = document.createElement('li');
@@ -46,18 +45,18 @@
 		}
 	};
 
-	Diagram.prototype.setFocus = function(item){
+	this.setFocus = function(item){
 		this.source.style.setProperty('--graphic-blur', '5px');
 		//document.querySelector('.graphic').style.setProperty('--graphic-blur', '5px');
 		item.style.setProperty('--graphic-blur', '0px');
 	}
 
-	Diagram.prototype.blur = function(item){
+	this.blur = function(item){
 		item.style.removeProperty('--graphic-blur');
 		this.source.style.setProperty('--graphic-blur', '0px');
 	}
 
-	Diagram.prototype.getMax = function(positions){
+	this.getMax = function(positions){
 		var max = positions[0].value;
 		positions.forEach(function(item, i, arr){
 			if(item.value > max) max = item.value;
@@ -65,11 +64,11 @@
 		return max;
 	}
 
-	Diagram.prototype.setTheme = function(color) {
+	this.setTheme = function(color) {
 		this.source.style.setProperty('--graphic-bg-color', color);
 	}
 
-	Diagram.prototype.showDetailBox = function(item, data){
+	this.showDetailBox = function(item, data){
 		var oldBox = document.getElementById(data.name+'_diagram_box');
 		if(oldBox && oldBox.id == data.name+'_diagram_box') oldBox.remove();
 		var div = document.createElement('div');
@@ -118,7 +117,7 @@
 		}
 	}
 
-	Diagram.prototype.generateDiagram = function(name, data){
+	this.generateDiagram = function(name, data){
 		var diagram = document.createElement('ol');
 		this.source.appendChild(diagram);
 
@@ -168,3 +167,4 @@
 			div.appendChild(p);
 		});
 	}
+}
