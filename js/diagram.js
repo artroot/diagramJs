@@ -81,8 +81,7 @@
 		
 		if (event.clientX >= window.innerWidth-div.clientWidth+50) div.style.setProperty('left', event.clientX-div.clientWidth+'px');
 		else div.style.setProperty('left', event.clientX+'px');
-		div.setAttribute('tabindex', 1);
-		div.setAttribute('contentEditable', true);
+		div.setAttribute('tabindex', -1);
 		div.focus();
 		
 		var thisClass = this;
@@ -140,6 +139,7 @@
 			li.style.setProperty('animation-name', 'animate-li');
 			li.style.setProperty('--graphic-padding-top', (diagramSpaceHeight/maxItem*item.value)+'px');
 			li.style.setProperty('width', (100/data.length)-5+'%');
+			li.setAttribute('diagram-element', item.name+""+item.value);
 			li.name = item.name;	
 			diagram.appendChild(li);
 
@@ -168,3 +168,10 @@
 		});
 	}
 }
+
+
+document.onclick = function(el){
+	if (el.toElement.getAttribute('diagram-element') == null && document.activeElement != el.toElement) {
+		document.activeElement.blur();
+	}
+};

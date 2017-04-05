@@ -190,6 +190,10 @@
 	box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.64);
 }
 
+.descr:focus {
+	
+}
+
 .descr > header {
 	border-radius: 8px 8px 0 0;
 	padding: 10px;
